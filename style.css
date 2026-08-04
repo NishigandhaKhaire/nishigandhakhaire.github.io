@@ -87,3 +87,25 @@ button:hover{
 transform:scale(1.08);
 background:#0095d9;
 }
+.linkedin-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #0A66C2;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.linkedin-btn i {
+    font-size: 22px;
+}
+
+.linkedin-btn:hover {
+    transform: translateY(-3px);
+    opacity: 0.9;
+}
