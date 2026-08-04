@@ -109,3 +109,57 @@ background:#0095d9;
     transform: translateY(-3px);
     opacity: 0.9;
 }
+.hero-buttons {
+
+display: flex;
+gap: 15px;
+margin-top: 25px;
+justify-content: flex-start;
+
+}
+
+
+.resume-btn,
+.linkedin-btn {
+
+display: inline-flex;
+align-items: center;
+gap: 8px;
+
+padding: 12px 24px;
+
+border-radius: 8px;
+
+text-decoration: none;
+
+font-weight: 600;
+
+font-size: 16px;
+
+transition: 0.3s;
+
+}
+
+
+.resume-btn {
+
+background: #111;
+color: white;
+
+}
+
+
+.linkedin-btn {
+
+background: #0A66C2;
+color: white;
+
+}
+
+
+.resume-btn:hover,
+.linkedin-btn:hover {
+
+transform: translateY(-3px);
+
+}
