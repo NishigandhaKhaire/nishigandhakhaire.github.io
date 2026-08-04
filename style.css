@@ -479,3 +479,85 @@ nav a:hover::after {
     width: 60%;
 
 }
+/* Overall background */
+
+body {
+
+    background: linear-gradient(
+        135deg,
+        #ffffff 0%,
+        #f4f8ff 50%,
+        #ffffff 100%
+    );
+
+}
+
+
+/* Hero premium background */
+
+.hero {
+
+    min-height: 85vh;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:80px 8%;
+
+    background:
+    radial-gradient(
+        circle at top right,
+        rgba(10,102,194,0.15),
+        transparent 40%
+    );
+
+}
+
+
+/* Section cards */
+
+section:not(.hero) {
+
+    margin:40px 8%;
+
+    background:rgba(255,255,255,0.7);
+
+    backdrop-filter:blur(12px);
+
+    border-radius:20px;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,0.06);
+
+}
+
+
+/* Section headings */
+
+section h2 {
+
+    position:relative;
+
+}
+
+
+section h2::after {
+
+    content:"";
+
+    display:block;
+
+    width:60px;
+
+    height:4px;
+
+    background:#0A66C2;
+
+    margin-top:10px;
+
+    border-radius:10px;
+
+}
