@@ -1,165 +1,298 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Arial", sans-serif;
 }
 
-body{
-background:#081b29;
-color:white;
+html {
+    scroll-behavior: smooth;
 }
 
-nav{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:25px 80px;
-background:#05131d;
-position:sticky;
-top:0;
+body {
+    background: #ffffff;
+    color: #333;
+    line-height: 1.6;
 }
 
-.logo{
-font-size:28px;
-font-weight:bold;
-color:#00abf0;
+
+/* Navigation */
+
+header {
+    width: 100%;
+    padding: 20px 8%;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 100;
 }
 
-nav ul{
-display:flex;
-list-style:none;
-gap:35px;
-}
 
-nav a{
-text-decoration:none;
-color:white;
-font-size:18px;
-transition:.3s;
-}
-
-nav a:hover{
-color:#00abf0;
-}
-
-.hero{
-height:90vh;
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:20px;
-}
-
-.content{
-max-width:800px;
-}
-
-h1{
-font-size:60px;
-margin:15px 0;
-}
-
-h2{
-color:#00abf0;
-height:40px;
-}
-
-p{
-font-size:20px;
-line-height:35px;
-margin:25px 0;
-}
-
-button{
-padding:15px 35px;
-font-size:18px;
-border:none;
-border-radius:30px;
-background:#00abf0;
-color:white;
-cursor:pointer;
-transition:.3s;
-}
-
-button:hover{
-transform:scale(1.08);
-background:#0095d9;
-}
-.linkedin-btn {
-    display: inline-flex;
+nav {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 8px;
-    background: #0A66C2;
-    color: white;
-    padding: 12px 25px;
-    border-radius: 8px;
+}
+
+
+nav h2 {
+    font-size: 26px;
+    color: #111;
+}
+
+
+nav a {
     text-decoration: none;
+    color: #555;
+    margin-left: 25px;
     font-weight: 600;
-    font-size: 16px;
-    transition: 0.3s;
 }
 
-.linkedin-btn i {
+
+nav a:hover {
+    color: #0A66C2;
+}
+
+
+
+/* Hero */
+
+.hero {
+
+    padding: 90px 8%;
+
+}
+
+
+.hero h1 {
+
+    font-size: 52px;
+    margin-bottom: 15px;
+
+}
+
+
+.hero h3 {
+
     font-size: 22px;
+    color: #0A66C2;
+    margin-bottom: 20px;
+
 }
 
-.linkedin-btn:hover {
-    transform: translateY(-3px);
-    opacity: 0.9;
+
+.hero p {
+
+    max-width: 650px;
+    font-size: 18px;
+    color: #666;
+
 }
+
+
+
+
 .hero-buttons {
 
-display: flex;
-gap: 15px;
-margin-top: 25px;
-justify-content: flex-start;
+    margin-top: 35px;
+    display: flex;
+    gap: 15px;
 
 }
+
 
 
 .resume-btn,
 .linkedin-btn {
 
-display: inline-flex;
-align-items: center;
-gap: 8px;
-
-padding: 12px 24px;
-
-border-radius: 8px;
-
-text-decoration: none;
-
-font-weight: 600;
-
-font-size: 16px;
-
-transition: 0.3s;
+    padding: 13px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    transition: 0.3s;
 
 }
+
 
 
 .resume-btn {
 
-background: #111;
-color: white;
+    background: #111;
+    color:white;
 
 }
+
 
 
 .linkedin-btn {
 
-background: #0A66C2;
-color: white;
+    background:#0A66C2;
+    color:white;
 
 }
+
 
 
 .resume-btn:hover,
 .linkedin-btn:hover {
 
-transform: translateY(-3px);
+    transform: translateY(-3px);
+
+}
+
+
+
+/* Sections */
+
+
+section {
+
+    padding: 70px 8%;
+
+}
+
+
+
+section h2 {
+
+    font-size: 34px;
+    margin-bottom: 30px;
+    color:#111;
+
+}
+
+
+
+
+/* About */
+
+section p {
+
+    max-width:850px;
+    font-size:17px;
+    color:#555;
+
+}
+
+
+
+
+/* Skills */
+
+
+#skills ul,
+#certifications ul {
+
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+    list-style:none;
+
+}
+
+
+#skills li,
+#certifications li {
+
+    background:#f5f7fa;
+    padding:12px 20px;
+    border-radius:25px;
+    font-weight:600;
+
+}
+
+
+
+/* Projects & Experience Cards */
+
+
+#projects h3,
+#experience p {
+
+    background:#f8f9fb;
+    padding:25px;
+    margin:20px 0;
+    border-radius:12px;
+
+}
+
+
+#projects h3 {
+
+    margin-bottom:5px;
+
+}
+
+
+
+
+/* Contact */
+
+#contact {
+
+    text-align:center;
+
+}
+
+
+#contact .linkedin-btn {
+
+    margin-top:20px;
+
+}
+
+
+
+/* Footer */
+
+
+footer {
+
+    padding:25px;
+    text-align:center;
+    background:#111;
+    color:white;
+
+}
+
+
+
+
+/* Mobile */
+
+@media(max-width:768px){
+
+nav {
+
+    flex-direction:column;
+    gap:15px;
+
+}
+
+
+.hero h1 {
+
+    font-size:40px;
+
+}
+
+
+.hero-buttons {
+
+    flex-direction:column;
+    width:fit-content;
+
+}
+
+
+nav a {
+
+    margin:0 10px;
+
+}
 
 }
