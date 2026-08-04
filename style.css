@@ -386,3 +386,25 @@ nav a:hover {
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 
 }
+nav a {
+
+    text-decoration: none;
+    color: #333;
+    padding: 12px 20px;
+    margin-left: 10px;
+    border-radius: 10px;
+    font-weight: 600;
+    display: inline-block;
+    transition: all 0.3s ease;
+
+}
+
+
+nav a:hover {
+
+    background: #0A66C2;
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(10,102,194,0.35);
+
+}
