@@ -51,8 +51,8 @@ nav.top .brand:hover{color:var(--teal)}
 nav.top a{color:var(--muted);text-decoration:none} nav.top a:hover{color:var(--teal)}
 
 /* hero */
-header.hero{display:grid;grid-template-columns:150px minmax(0,1fr);gap:32px;align-items:center;background:var(--hero);color:var(--heroink);padding:34px;border-radius:6px;position:relative;overflow:hidden;margin-top:24px}
-header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:280px;height:280px;border-radius:50%;border:40px solid var(--herogold);opacity:.16;pointer-events:none}
+header.hero{display:grid;grid-template-columns:150px minmax(0,1fr);gap:32px;align-items:center;background:var(--hero);color:var(--heroink);padding:34px;border-radius:6px;position:relative;overflow:visible;margin-top:24px}
+header.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:280px;height:280px;border-radius:50%;border:40px solid var(--herogold);opacity:.16;pointer-events:none;clip-path:inset(70px 70px 0 0)}
 header.hero img{width:150px;height:170px;object-fit:cover;border-radius:4px;display:block;box-shadow:0 0 0 3px var(--herogold)}
 .hgroup{display:grid;gap:12px;min-width:0;position:relative;z-index:1}
 .goldline{width:56px;height:3px;background:var(--herogold)}
@@ -241,10 +241,10 @@ nav.top a.navcta:hover{color:var(--bg);opacity:.9}
 .toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
 
 .emenu{position:relative}
-.eopts{position:absolute;top:calc(100% + 6px);left:0;z-index:15;min-width:210px;background:#2C3E50;border:1px solid #7F8C8D;border-radius:6px;padding:6px;display:grid;box-shadow:0 10px 28px rgba(0,0,0,.35)}
+.eopts{position:absolute;top:calc(100% + 8px);left:0;z-index:30;min-width:220px;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:6px;display:grid;box-shadow:0 14px 34px rgba(20,28,36,.28);animation:pop .18s ease-out}
 .eopts[hidden]{display:none}
-.eopts a,.eopts button{font:inherit;font-size:.88rem;text-align:left;color:#ECF0F1;text-decoration:none;background:none;border:0;padding:9px 10px;border-radius:4px;cursor:pointer}
-.eopts a:hover,.eopts button:hover{background:#34495E;color:#FFFFFF}
+.eopts a,.eopts button{font:inherit;font-size:.88rem;text-align:left;color:var(--ink);text-decoration:none;background:none;border:0;padding:10px 12px;border-radius:4px;cursor:pointer}
+.eopts a:hover,.eopts button:hover,.eopts a:focus-visible,.eopts button:focus-visible{background:var(--paper);color:var(--ink)}
 
 .focus{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .focus .lbl{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-right:4px}
@@ -280,7 +280,7 @@ nav.top a.navcta:hover{color:var(--bg);opacity:.9}
 
 .dd{position:relative}
 .dd .car{font-size:.7em;opacity:.7}
-.ddm{position:absolute;top:100%;left:-12px;min-width:250px;padding:6px;margin-top:6px;background:#FFFFFF;border:1px solid var(--line);border-radius:6px;box-shadow:0 12px 28px rgba(44,62,80,.16);display:none;z-index:20}
+.ddm{position:absolute;top:100%;left:-12px;min-width:250px;padding:6px;margin-top:6px;background:var(--bg);border:1px solid var(--line);border-radius:6px;animation:pop .18s ease-out;box-shadow:0 12px 28px rgba(44,62,80,.16);display:none;z-index:20}
 .ddm::before{content:"";position:absolute;left:0;right:0;top:-10px;height:10px}
 nav.top .ddm a{display:block;padding:8px 10px;border-radius:4px;color:var(--ink);font-size:.86rem;line-height:1.35}
 nav.top .ddm a:hover,nav.top .ddm a:focus-visible{background:var(--paper);color:var(--ink)}
@@ -292,6 +292,53 @@ nav.top .ddm a.ddall{font-weight:600;border-bottom:1px solid var(--line);border-
 nav.top a.lang{font-weight:600;color:var(--ink);border:1px solid var(--line);border-radius:99px;padding:3px 10px}
 nav.top a.lang:hover{border-color:var(--ink)}
 
+@keyframes pop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.eopts,.ddm{animation:none}}
+html[data-theme="dark"]{--bg:#17202A;--paper:#212F3D;--ink:#ECF0F1;--muted:#BDC3C7;--line:#34495E;--teal:#ECF0F1;--tealsoft:#212F3D;--gold:#95A5A6;--goldsoft:#212F3D;--neg:#E8A08F;--hero:#2C3E50;--heroink:#ECF0F1;--herosub:#BDC3C7;--herogold:#ECF0F1;color-scheme:dark}
+html[data-theme="dark"] body{background:var(--bg);color:var(--ink)}
+html[data-theme="dark"] .band{background:#212F3D}
+html[data-theme="dark"] .eopts{box-shadow:0 14px 34px rgba(0,0,0,.5)}
+.themeb{font:inherit;font-size:.95rem;line-height:1;width:32px;height:32px;display:inline-grid;place-items:center;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--ink);cursor:pointer;padding:0}
+.themeb:hover{border-color:var(--ink)}
+header.hero .eopts a,header.hero .eopts button{color:var(--ink)!important;text-decoration:none}
+
+.ic{width:1.05em;height:1.05em;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.hbtn,.mini,.eopts a,.eopts button,.copy,.sendb{display:inline-flex;align-items:center;gap:.45em}
+.clbl{display:inline-flex;align-items:center;gap:.5em}
+.clbl .ic{width:1.35em;height:1.35em;stroke-width:1.6;color:var(--ink)}
+.mini{padding:3px 9px}
+.cform{margin-top:16px;background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:6px;padding:18px;display:grid;gap:12px}
+.cfh p{margin:4px 0 0;color:var(--muted);font-size:.9rem}
+.cform label{display:grid;gap:5px;font-size:.84rem;color:var(--muted)}
+.cform input,.cform textarea{font:inherit;font-size:.95rem;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:5px;padding:10px 12px;width:100%;box-sizing:border-box}
+.cform textarea{resize:vertical;min-height:110px}
+.cform input:focus,.cform textarea:focus{outline:2px solid var(--teal);outline-offset:1px}
+.cform [aria-invalid="true"]{border-color:var(--neg)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:620px){.row2{grid-template-columns:1fr}}
+.cform .hp{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;border:0!important;overflow:hidden;clip-path:inset(50%);opacity:0;pointer-events:none}
+.cfrow{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.sendb{font:inherit;font-weight:600;font-size:.92rem;background:var(--teal);color:var(--bg);border:0;border-radius:5px;padding:10px 18px;cursor:pointer}
+.sendb:hover{opacity:.92}.sendb:disabled{opacity:.6;cursor:default}
+.cfst{font-size:.88rem;color:var(--muted)}
+.cfst.ok{color:var(--ink);font-weight:600}
+
+.rail{position:fixed;right:max(14px,env(safe-area-inset-right,0px));top:50%;transform:translate(16px,-50%);display:flex;flex-direction:column;gap:10px;z-index:12;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s}
+.rail.on{opacity:1;transform:translate(0,-50%);pointer-events:auto}
+.rbtn{position:relative;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:#2C3E50;color:#ECF0F1;border:1px solid #7F8C8D;box-shadow:0 6px 18px rgba(20,28,36,.22);text-decoration:none}
+.rbtn .ic{width:20px;height:20px}
+.rbtn:hover,.rbtn:focus-visible{background:#34495E}
+.rtip{position:absolute;right:calc(100% + 10px);top:50%;transform:translateY(-50%);white-space:nowrap;background:#2C3E50;color:#ECF0F1;font-size:.78rem;font-weight:600;padding:5px 9px;border-radius:4px;opacity:0;pointer-events:none;transition:opacity .15s}
+.rbtn:hover .rtip,.rbtn:focus-visible .rtip{opacity:1}
+html[data-theme="dark"] .rbtn{background:#ECF0F1;color:#2C3E50;border-color:#BDC3C7}
+@media (max-width:620px){
+ .rail{top:auto;bottom:max(18px,env(safe-area-inset-bottom,0px));right:auto;left:max(16px,env(safe-area-inset-left,0px));flex-direction:row;transform:translateY(12px)}
+ .rail.on{transform:none}
+ .rbtn{width:42px;height:42px}
+ .rtip{display:none}
+}
+@media (prefers-reduced-motion:reduce){.rail{transition:none}}
+
 /* Arabic version: right to left layout, Arabic typeface */
 :root{--display:"IBM Plex Sans Arabic","Public Sans",Tahoma,Arial,sans-serif;--body:"IBM Plex Sans Arabic","Public Sans",Tahoma,Arial,sans-serif;--mono:"IBM Plex Sans Arabic",Tahoma,Arial,sans-serif}
 body{line-height:1.8}
@@ -302,7 +349,7 @@ svg text{font-family:"IBM Plex Sans Arabic",Tahoma,Arial,sans-serif}
 .kpi b,.fact b{direction:ltr;unicode-bidi:isolate;text-align:right}
 .sechead::after{left:auto;right:0}
 nav.top .brand{margin-right:0;margin-left:auto}
-header.hero::after{right:auto;left:-70px}
+header.hero::after{right:auto;left:-70px;clip-path:inset(70px 0 0 70px)}
 .fact+.fact{padding-left:0;border-left:0;padding-right:16px;border-right:1px solid var(--line)}
 .find div{border-left:0;border-right:3px solid var(--gold)}
 .card-viz{border-left:0;border-right:1px solid var(--line)}
@@ -310,18 +357,35 @@ header.hero::after{right:auto;left:-70px}
 blockquote{border-left:0;padding-left:0;border-right:2px solid var(--teal);padding-right:16px}
 .note{border-left:1px solid var(--line);border-right:3px solid var(--gold)}
 .badges .lbl,.focus .lbl{margin-right:0;margin-left:4px}
-.eopts{left:auto;right:0}.eopts a,.eopts button{text-align:right}
+.eopts{left:auto;right:0}
+.themeb{font-family:inherit}.eopts a,.eopts button{text-align:right}
 .ddm{left:auto;right:-12px}
 @media (max-width:620px){.ddm{right:16px;left:16px}}
 .fab{right:auto;left:max(16px,env(safe-area-inset-left,0px))}
+.rail{right:auto;left:max(14px,env(safe-area-inset-left,0px));transform:translate(-16px,-50%)}
+.rail.on{transform:translate(0,-50%)}
+.rtip{right:auto;left:calc(100% + 10px)}
+@media (max-width:620px){.rail{left:auto;right:max(16px,env(safe-area-inset-right,0px));transform:translateY(12px)}.rail.on{transform:none}}
 .ltr{direction:ltr;unicode-bidi:isolate}
 </style>
 </head>
 <body>
 
+<script>try{if(localStorage.getItem("mk-theme")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h3.5l2 5-2.4 1.5a11 11 0 0 0 5.4 5.4L15 13.5l5 2V19a2 2 0 0 1-2 2A15 15 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+<symbol id="i-chat" viewBox="0 0 24 24"><path d="M20.5 11.5a8.5 8.5 0 0 1-12.4 7.6L3.5 20.5l1.4-4.4a8.5 8.5 0 1 1 15.6-4.6z"/><path d="M9 10.5h6M9 13.5h4"/></symbol>
+<symbol id="i-profile" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="12" cy="10" r="3"/><path d="M7 18a5 5 0 0 1 10 0"/></symbol>
+<symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></symbol>
+<symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></symbol>
+<symbol id="i-send" viewBox="0 0 24 24"><path d="M21 3 10 14M21 3l-7 18-4-7-7-4z"/></symbol>
+<symbol id="i-open" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
+<symbol id="i-card" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="11" r="2"/><path d="M5.5 16a3 3 0 0 1 6 0M14 10h4M14 13h4"/></symbol>
+</defs></svg>
 <nav class="top" id="top" aria-label="الأقسام"><div class="in">
   <button type="button" class="brand" aria-label="العودة إلى أعلى الصفحة">مايا كشك</button>
-  <a href="#about">نبذة</a><div class="dd"><a class="ddt" href="#publications" aria-haspopup="true" aria-expanded="false">المنشورات <span class="car" aria-hidden="true">▾</span></a><div class="ddm" role="menu"><a role="menuitem" href="#publications" class="ddall">جميع المنشورات</a><a role="menuitem" href="#egl">ما بعد الاستقلال الطاقوي · مختبر الحوكمة الأوروبي، ٢٠٢٦</a><a role="menuitem" href="#gdf">الوظائف الخضراء في دول الخليج · منتدى التنمية الخليجي، ٢٠٢٥</a></div></div><div class="dd"><a class="ddt" href="#work" aria-haspopup="true" aria-expanded="false">نماذج من الأعمال <span class="car" aria-hidden="true">▾</span></a><div class="ddm" role="menu"><a role="menuitem" href="#work" class="ddall">جميع نماذج الأعمال</a><a role="menuitem" href="#credit">مؤشر الائتمان الاستهلاكي</a><a role="menuitem" href="#newsletter">النشرة الوزارية</a><a role="menuitem" href="#lindo">دراسة المستهلكين لليندو</a><a role="menuitem" href="#imf">مذكرة آفاق صندوق النقد الدولي</a><a role="menuitem" href="#brics">دراسة قياسية لدول البريكس</a></div></div><a href="#experience">الخبرات</a><a class="opt" href="#skills">المهارات</a><a href="#references">التوصيات</a><a class="lang" href="index.html" lang="en" hreflang="en">English</a><a class="navcta" href="#contact">التواصل</a>
+  <a href="#about">نبذة</a><div class="dd"><a class="ddt" href="#publications" aria-haspopup="true" aria-expanded="false">المنشورات <span class="car" aria-hidden="true">▾</span></a><div class="ddm" role="menu"><a role="menuitem" href="#publications" class="ddall">جميع المنشورات</a><a role="menuitem" href="#egl">ما بعد الاستقلال الطاقوي · مختبر الحوكمة الأوروبي، ٢٠٢٦</a><a role="menuitem" href="#gdf">الوظائف الخضراء في دول الخليج · منتدى التنمية الخليجي، ٢٠٢٥</a></div></div><div class="dd"><a class="ddt" href="#work" aria-haspopup="true" aria-expanded="false">نماذج من الأعمال <span class="car" aria-hidden="true">▾</span></a><div class="ddm" role="menu"><a role="menuitem" href="#work" class="ddall">جميع نماذج الأعمال</a><a role="menuitem" href="#credit">مؤشر الائتمان الاستهلاكي</a><a role="menuitem" href="#newsletter">النشرة الوزارية</a><a role="menuitem" href="#lindo">دراسة المستهلكين لليندو</a><a role="menuitem" href="#imf">مذكرة آفاق صندوق النقد الدولي</a><a role="menuitem" href="#brics">دراسة قياسية لدول البريكس</a></div></div><a href="#experience">الخبرات</a><a class="opt" href="#skills">المهارات</a><a href="#references">التوصيات</a><button type="button" class="themeb" id="themeb" aria-pressed="false" aria-label="التبديل إلى الوضع الليلي" title="الوضع الليلي">☾</button><a class="lang" href="index.html" lang="en" hreflang="en">English</a><a class="navcta" href="#contact">التواصل</a>
 </div></nav>
 
 <div class="wrap">
@@ -332,21 +396,21 @@ blockquote{border-left:0;padding-left:0;border-right:2px solid var(--teal);paddi
     <h1>مايا كشك</h1><span class="goldline" aria-hidden="true"></span>
     <p class="role">خبيرة اقتصادية ومحللة أبحاث · أسواق الطاقة والتجارة العالمية والمخاطر الجيوسياسية</p>
     <div class="actions">
-      <div class="emenu"><button type="button" class="hbtn pri" id="ebtn" aria-expanded="false" aria-controls="eopts">البريد الإلكتروني ▾</button>
+      <div class="emenu"><button type="button" class="hbtn pri" id="ebtn" aria-expanded="false" aria-controls="eopts"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>البريد الإلكتروني ▾</button>
         <div class="eopts" id="eopts" hidden>
-          <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=mayakeshk3@gmail.com&amp;su=Enquiry%20via%20portfolio" target="_blank" rel="noopener">فتح في Gmail</a>
-          <a href="https://outlook.office.com/mail/deeplink/compose?to=mayakeshk3@gmail.com&amp;subject=Enquiry%20via%20portfolio" target="_blank" rel="noopener">فتح في Outlook</a>
-          <a href="mailto:mayakeshk3@gmail.com?subject=Enquiry%20via%20portfolio" target="_blank" rel="noopener">فتح في تطبيق البريد</a>
-          <button type="button" class="ecopy">نسخ عنوان البريد الإلكتروني</button>
+          <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=mayakeshk3@gmail.com&amp;su=Enquiry%20via%20portfolio" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>فتح في Gmail</a>
+          <a href="https://outlook.office.com/mail/deeplink/compose?to=mayakeshk3@gmail.com&amp;subject=Enquiry%20via%20portfolio" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>فتح في Outlook</a>
+          <a href="mailto:mayakeshk3@gmail.com?subject=Enquiry%20via%20portfolio" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-open"/></svg>فتح في تطبيق البريد</a>
+          <button type="button" class="ecopy"><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg>نسخ عنوان البريد الإلكتروني</button>
         </div></div>
-      <a class="hbtn" href="https://wa.me/97332009796" target="_blank" rel="noopener">واتساب</a>
-      <a class="hbtn" href="Maya_Keshk_Resume.pdf" download="Maya_Keshk_Resume.pdf" target="_blank" rel="noopener">تحميل السيرة الذاتية (بالإنجليزية)</a>
-      <a class="hbtn" href="https://www.linkedin.com/in/mayakeshk" target="_blank" rel="noopener">لينكدإن</a>
-      <a class="hbtn" href="#contact">جميع بيانات التواصل</a>
+      <a class="hbtn" href="https://wa.me/97332009796" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>واتساب</a>
+      <a class="hbtn" href="Maya_Keshk_Resume.pdf" download="Maya_Keshk_Resume.pdf" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg>تحميل السيرة الذاتية (بالإنجليزية)</a>
+      <a class="hbtn" href="https://www.linkedin.com/in/mayakeshk" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-profile"/></svg>لينكدإن</a>
+      <a class="hbtn" href="#contact"><svg class="ic" aria-hidden="true"><use href="#i-card"/></svg>جميع بيانات التواصل</a>
     </div>
     <div class="contact">
       <span>mayakeshk3@gmail.com</span><button class="copy" type="button" data-copy="mayakeshk3@gmail.com">نسخ</button>
-      <span>+٩٧٣ ٣٢٠٠ ٩٧٩٦</span><button class="copy" type="button" data-copy="+973 3200 9796">نسخ</button>
+      <span><bdi class="ltr" dir="ltr">‎+٩٧٣‎ ‎٣٢٠٠‎ ‎٩٧٩٦‎</bdi></span><button class="copy" type="button" data-copy="+973 3200 9796">نسخ</button>
       <span>حاملة الإقامة الذهبية في البحرين</span>
     </div>
     <div class="badges"><span class="lbl">ظهرت في</span><span class="badge">مختبر الحوكمة الأوروبي</span><span class="badge">منتدى التنمية الخليجي</span><span class="badge">قناة النيل</span></div>
@@ -559,10 +623,18 @@ blockquote{border-left:0;padding-left:0;border-right:2px solid var(--teal);paddi
   <div class="sechead"><span class="eyebrow">التواصل</span><h2>الاستفسارات والفرص</h2></div>
   <p class="lead">للاستفسارات أو الفرص المهنية أو التعاون، يسعدنا تواصلكم عبر واتساب أو البريد الإلكتروني. يتم الرد على كل رسالة خلال ٤٨ ساعة.</p>
   <div class="cgrid">
-    <div class="ccard"><span class="clbl">البريد الإلكتروني</span><a class="cval mailbtn" href="mailto:mayakeshk3@gmail.com?subject=Enquiry%20via%20portfolio" target="_blank" rel="noopener">mayakeshk3@gmail.com</a><div class="cbtns"><a class="mini" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=mayakeshk3@gmail.com&amp;su=Enquiry%20via%20portfolio" target="_blank" rel="noopener">فتح في Gmail</a><a class="mini" href="https://outlook.office.com/mail/deeplink/compose?to=mayakeshk3@gmail.com&amp;subject=Enquiry%20via%20portfolio" target="_blank" rel="noopener">فتح في Outlook</a><button class="copy" type="button" data-copy="mayakeshk3@gmail.com">نسخ</button></div></div>
-    <div class="ccard"><span class="clbl">واتساب والهاتف</span><a class="cval" href="https://wa.me/97332009796" target="_blank" rel="noopener">+٩٧٣ ٣٢٠٠ ٩٧٩٦</a><div class="cbtns"><a class="mini" href="https://wa.me/97332009796" target="_blank" rel="noopener">مراسلة عبر واتساب</a><a class="mini" href="tel:+97332009796">اتصال</a><button class="copy" type="button" data-copy="+973 3200 9796">نسخ</button></div></div>
-    <div class="ccard"><span class="clbl">لينكدإن</span><a class="cval" href="https://www.linkedin.com/in/mayakeshk" target="_blank" rel="noopener">linkedin.com/in/mayakeshk</a></div>
+    <div class="ccard"><span class="clbl"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>البريد الإلكتروني</span><a class="cval mailbtn" href="mailto:mayakeshk3@gmail.com?subject=Enquiry%20via%20portfolio" target="_blank" rel="noopener">mayakeshk3@gmail.com</a><div class="cbtns"><a class="mini" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=mayakeshk3@gmail.com&amp;su=Enquiry%20via%20portfolio" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>فتح في Gmail</a><a class="mini" href="https://outlook.office.com/mail/deeplink/compose?to=mayakeshk3@gmail.com&amp;subject=Enquiry%20via%20portfolio" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>فتح في Outlook</a><button class="copy" type="button" data-copy="mayakeshk3@gmail.com">نسخ</button></div></div>
+    <div class="ccard"><span class="clbl"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>واتساب والهاتف</span><a class="cval" href="https://wa.me/97332009796" target="_blank" rel="noopener"><bdi class="ltr" dir="ltr">‎+٩٧٣‎ ‎٣٢٠٠‎ ‎٩٧٩٦‎</bdi></a><div class="cbtns"><a class="mini" href="https://wa.me/97332009796" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>مراسلة عبر واتساب</a><a class="mini" href="tel:+97332009796"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>اتصال</a><button class="copy" type="button" data-copy="+973 3200 9796">نسخ</button></div></div>
+    <div class="ccard"><span class="clbl"><svg class="ic" aria-hidden="true"><use href="#i-profile"/></svg>لينكدإن</span><a class="cval" href="https://www.linkedin.com/in/mayakeshk" target="_blank" rel="noopener">linkedin.com/in/mayakeshk</a><div class="cbtns"><a class="mini" href="https://www.linkedin.com/in/mayakeshk" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-open"/></svg>عرض الملف الشخصي</a></div></div>
   </div>
+  <form class="cform" id="cform" novalidate>
+    <div class="cfh"><span class="clbl"><svg class="ic" aria-hidden="true"><use href="#i-send"/></svg>أرسل رسالة</span><p>تصل الرسائل مباشرة إلى مايا كشك عبر البريد الإلكتروني.</p></div>
+    <div class="row2"><label>الاسم<input name="name" required autocomplete="name"></label><label>البريد الإلكتروني<input name="email" type="email" required autocomplete="email" dir="ltr"></label></div>
+    <label>الجهة (اختياري)<input name="organisation" autocomplete="organization"></label>
+    <label>الرسالة<textarea name="message" rows="5" required></textarea></label>
+    <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="cfrow"><button type="submit" class="sendb"><svg class="ic" aria-hidden="true"><use href="#i-send"/></svg>إرسال الرسالة</button><span class="cfst" role="status" aria-live="polite"></span></div>
+  </form>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <p class="cfoot">حاملة الإقامة الذهبية في البحرين · النصوص الكاملة للأوراق ودراسة ليندو متاحة عند الطلب.</p>
 </div></section>
@@ -578,7 +650,7 @@ blockquote{border-left:0;padding-left:0;border-right:2px solid var(--teal);paddi
 
 <section class="sec">
   <p class="note">ملاحظة حول البيانات: جميع البيانات والتحليلات والرسوم البيانية في هذا الملف جمعتها مايا كشك وحللتها وصممتها، استنادًا إلى أبحاث ميدانية أولية والمصادر المنشورة والعامة المشار إليها في كل قسم.</p>
-  <div class="foot"><span>مايا كشك · mayakeshk3@gmail.com · ‎+٩٧٣ ٣٢٠٠ ٩٧٩٦</span><button type="button" class="totop" onclick="var r=matchMedia('(prefers-reduced-motion: reduce)').matches;window.scrollTo({top:0,behavior:r?'auto':'smooth'});">العودة إلى الأعلى ↑</button></div>
+  <div class="foot"><span>مايا كشك · mayakeshk3@gmail.com · <bdi class="ltr" dir="ltr">‎+٩٧٣‎ ‎٣٢٠٠‎ ‎٩٧٩٦‎</bdi></span><button type="button" class="totop" onclick="var r=matchMedia('(prefers-reduced-motion: reduce)').matches;window.scrollTo({top:0,behavior:r?'auto':'smooth'});">العودة إلى الأعلى ↑</button></div>
 </section>
 </div>
 
@@ -693,6 +765,11 @@ m.querySelector('.ecopy').addEventListener('click',function(){
   <img class="lbimg" src="" alt="">
   <button type="button" class="gnav lbnext" aria-label="الصفحة التالية">›</button>
 </div>
+<nav class="rail" id="rail" aria-label="تواصل سريع">
+  <a class="rbtn" id="rmail" href="mailto:mayakeshk3@gmail.com?subject=Enquiry%20via%20portfolio" data-gmail="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=mayakeshk3@gmail.com&amp;su=Enquiry%20via%20portfolio" aria-label="البريد الإلكتروني" title="البريد الإلكتروني"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg><span class="rtip">البريد الإلكتروني</span></a>
+  <a class="rbtn" href="https://wa.me/97332009796" target="_blank" rel="noopener" aria-label="واتساب" title="واتساب"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg><span class="rtip">واتساب</span></a>
+  <a class="rbtn" href="tel:+97332009796" aria-label="اتصال" title="اتصال"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg><span class="rtip">اتصال</span></a>
+</nav>
 <button type="button" class="fab" id="fab" aria-label="العودة إلى أعلى الصفحة">↑ الأعلى</button>
 <script>
 (function(){var f=document.getElementById('fab');
@@ -744,6 +821,51 @@ document.addEventListener('click',function(e){if(!e.target.closest('.dd'))closeA
 document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeAll(null);if(document.activeElement&&document.activeElement.closest('.dd'))document.activeElement.blur()}});
 })();
 </script>
+<script>
+(function(){
+var b=document.getElementById('themeb');if(!b)return;var ar=document.documentElement.lang==='ar';
+function set(d){if(d)document.documentElement.setAttribute('data-theme','dark');else document.documentElement.removeAttribute('data-theme');
+ b.textContent=d?'☀':'☾';b.setAttribute('aria-pressed',d?'true':'false');
+ var l=d?(ar?'التبديل إلى الوضع النهاري':'Switch to day mode'):(ar?'التبديل إلى الوضع الليلي':'Switch to night mode');
+ b.setAttribute('aria-label',l);b.title=d?(ar?'الوضع النهاري':'Day mode'):(ar?'الوضع الليلي':'Night mode');
+ try{localStorage.setItem('mk-theme',d?'dark':'light')}catch(e){}}
+set(document.documentElement.getAttribute('data-theme')==='dark');
+b.addEventListener('click',function(){set(document.documentElement.getAttribute('data-theme')!=='dark')});
+})();
+</script>
+<script>
+(function(){
+var f=document.getElementById('cform');if(!f)return;var ar=document.documentElement.lang==='ar';
+var st=f.querySelector('.cfst'),btn=f.querySelector('.sendb');
+var T=ar?{req:'يرجى ملء الحقول المطلوبة.',mail:'يرجى إدخال بريد إلكتروني صحيح.',sending:'جارٍ الإرسال…',ok:'شكرًا لكم. تم إرسال الرسالة، وسيتم الرد خلال ٤٨ ساعة.',err:'تعذّر إرسال الرسالة. يرجى التواصل عبر mayakeshk3@gmail.com'}
+ :{req:'Please fill in the required fields.',mail:'Please enter a valid email address.',sending:'Sending…',ok:'Thank you. Your message has been sent, and a reply will follow within 48 hours.',err:'The message could not be sent. Please email mayakeshk3@gmail.com directly.'};
+function say(t,ok){st.textContent=t;st.classList.toggle('ok',!!ok)}
+f.addEventListener('submit',function(e){e.preventDefault();
+ var n=f.name.value.trim(),em=f.email.value.trim(),m=f.message.value.trim(),bad=false;
+ [[f.name,n],[f.email,em],[f.message,m]].forEach(function(x){x[0].setAttribute('aria-invalid',x[1]?'false':'true');if(!x[1])bad=true});
+ if(bad){say(T.req);return}
+ if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){f.email.setAttribute('aria-invalid','true');say(T.mail);return}
+ if(f._honey.value){say(T.ok,true);f.reset();return}
+ btn.disabled=true;say(T.sending);
+ fetch('https://formsubmit.co/ajax/mayakeshk3@gmail.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+  body:JSON.stringify({name:n,email:em,organisation:f.organisation.value.trim(),message:m,_subject:'Portfolio message from '+n,_template:'table',_replyto:em,_captcha:'false'})})
+ .then(function(r){return r.json()}).then(function(d){if(String(d.success)==='true'){say(T.ok,true);f.reset()}else say(T.err)})
+ .catch(function(){say(T.err)}).then(function(){btn.disabled=false});
+});
+})();
+</script>
+<script>
+(function(){
+var r=document.getElementById('rail');if(!r)return;var h=document.querySelector('header.hero');
+function u(){var lim=h?h.getBoundingClientRect().bottom:300;r.classList.toggle('on',lim<0)}
+window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u);u();
+var m=document.getElementById('rmail');
+if(matchMedia('(hover: hover) and (pointer: fine)').matches){m.href=m.getAttribute('data-gmail');m.target='_blank';m.rel='noopener'}
+})();
+</script>
+
+
+
 
 
 
