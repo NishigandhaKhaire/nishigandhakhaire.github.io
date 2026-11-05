@@ -334,7 +334,9 @@ header.hero .eopts a,header.hero .eopts button{color:var(--ink)!important;text-d
 .cform .hp{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;border:0!important;overflow:hidden;clip-path:inset(50%);opacity:0;pointer-events:none}
 .cfrow{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .sendb{font:inherit;font-weight:600;font-size:.92rem;background:var(--teal);color:var(--bg);border:0;border-radius:5px;padding:10px 18px;cursor:pointer}
-.sendb:hover{opacity:.92}.sendb:disabled{opacity:.6;cursor:default}
+.sendb:hover{opacity:.92}
+.sendb.alt{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.sendb.alt:hover{border-color:var(--ink)}.sendb:disabled{opacity:.6;cursor:default}
 .cfst{font-size:.88rem;color:var(--muted)}
 .cfst.ok{color:var(--ink);font-weight:600}
 
@@ -615,12 +617,10 @@ html[data-theme="dark"] .rbtn{background:#ECF0F1;color:#2C3E50;border-color:#BDC
     <div class="ccard"><span class="clbl"><svg class="ic" aria-hidden="true"><use href="#i-profile"/></svg>LinkedIn</span><a class="cval" href="https://www.linkedin.com/in/mayakeshk" target="_blank" rel="noopener">linkedin.com/in/mayakeshk</a><div class="cbtns"><a class="mini" href="https://www.linkedin.com/in/mayakeshk" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-open"/></svg>View profile</a></div></div>
   </div>
   <form class="cform" id="cform" novalidate>
-    <div class="cfh"><span class="clbl"><svg class="ic" aria-hidden="true"><use href="#i-send"/></svg>Send a message</span><p>Messages go directly to Maya Keshk by email.</p></div>
-    <div class="row2"><label>Name<input name="name" required autocomplete="name"></label><label>Email<input name="email" type="email" required autocomplete="email" dir="ltr"></label></div>
-    <label>Organisation (optional)<input name="organisation" autocomplete="organization"></label>
+    <div class="cfh"><span class="clbl"><svg class="ic" aria-hidden="true"><use href="#i-send"/></svg>Write a message</span><p>Write it here, then send it in one click through your own email or WhatsApp. Nothing is stored on this site.</p></div>
+    <div class="row2"><label>Name<input name="name" required autocomplete="name"></label><label>Organisation (optional)<input name="organisation" autocomplete="organization"></label></div>
     <label>Message<textarea name="message" rows="5" required></textarea></label>
-    <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-    <div class="cfrow"><button type="submit" class="sendb"><svg class="ic" aria-hidden="true"><use href="#i-send"/></svg>Send message</button><span class="cfst" role="status" aria-live="polite"></span></div>
+    <div class="cfrow"><button type="submit" class="sendb" data-via="email"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>Send by email</button><button type="submit" class="sendb alt" data-via="wa"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>Send on WhatsApp</button><span class="cfst" role="status" aria-live="polite"></span></div>
   </form>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <p class="cfoot">Bahrain Golden Residence Holder · Full papers and the Lindo study available on request.</p>
@@ -760,7 +760,9 @@ m.querySelector('.ecopy').addEventListener('click',function(){
 <button type="button" class="fab" id="fab" aria-label="Back to the top of the page">↑ Top</button>
 <script>
 (function(){var f=document.getElementById('fab');
-function u(){f.classList.toggle('on',window.scrollY>600)}
+var ft=document.querySelector('.foot'),atEnd=false;
+if(ft&&'IntersectionObserver' in window){new IntersectionObserver(function(e){atEnd=e[0].isIntersecting;u()}).observe(ft)}
+function u(){f.classList.toggle('on',window.scrollY>600&&!atEnd)}
 window.addEventListener('scroll',u,{passive:true});u();
 f.addEventListener('click',function(){var r=matchMedia('(prefers-reduced-motion: reduce)').matches;window.scrollTo({top:0,behavior:r?'auto':'smooth'})});})();
 </script>
@@ -822,29 +824,29 @@ b.addEventListener('click',function(){set(document.documentElement.getAttribute(
 </script>
 <script>
 (function(){
-var f=document.getElementById('cform');if(!f)return;var ar=document.documentElement.lang==='ar';
-var st=f.querySelector('.cfst'),btn=f.querySelector('.sendb');
-var T=ar?{req:'يرجى ملء الحقول المطلوبة.',mail:'يرجى إدخال بريد إلكتروني صحيح.',sending:'جارٍ الإرسال…',ok:'شكرًا لكم. تم إرسال الرسالة، وسيتم الرد خلال ٤٨ ساعة.',err:'تعذّر إرسال الرسالة. يرجى التواصل عبر mayakeshk3@gmail.com'}
- :{req:'Please fill in the required fields.',mail:'Please enter a valid email address.',sending:'Sending…',ok:'Thank you. Your message has been sent, and a reply will follow within 48 hours.',err:'The message could not be sent. Please email mayakeshk3@gmail.com directly.'};
-function say(t,ok){st.textContent=t;st.classList.toggle('ok',!!ok)}
+var f=document.getElementById('cform');if(!f)return;var ar=document.documentElement.lang==='ar',st=f.querySelector('.cfst'),via='email';
+var T=ar?{req:'يرجى كتابة الاسم والرسالة.',ok:'تم فتح البريد الإلكتروني أو واتساب والرسالة جاهزة. اضغط إرسال هناك.',hi:'مرحبًا مايا،',subj:'استفسار عبر الموقع: '}
+ :{req:'Please add your name and a message.',ok:'Your email or WhatsApp has opened with the message ready. Press send there.',hi:'Hello Maya,',subj:'Enquiry via portfolio: '};
+f.querySelectorAll('.sendb').forEach(function(b){b.addEventListener('click',function(){via=b.getAttribute('data-via')})});
 f.addEventListener('submit',function(e){e.preventDefault();
- var n=f.name.value.trim(),em=f.email.value.trim(),m=f.message.value.trim(),bad=false;
- [[f.name,n],[f.email,em],[f.message,m]].forEach(function(x){x[0].setAttribute('aria-invalid',x[1]?'false':'true');if(!x[1])bad=true});
- if(bad){say(T.req);return}
- if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){f.email.setAttribute('aria-invalid','true');say(T.mail);return}
- if(f._honey.value){say(T.ok,true);f.reset();return}
- btn.disabled=true;say(T.sending);
- fetch('https://formsubmit.co/ajax/mayakeshk3@gmail.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
-  body:JSON.stringify({name:n,email:em,organisation:f.organisation.value.trim(),message:m,_subject:'Portfolio message from '+n,_template:'table',_replyto:em,_captcha:'false'})})
- .then(function(r){return r.json()}).then(function(d){if(String(d.success)==='true'){say(T.ok,true);f.reset()}else say(T.err)})
- .catch(function(){say(T.err)}).then(function(){btn.disabled=false});
+ var n=f.name.value.trim(),o=f.organisation.value.trim(),m=f.message.value.trim();
+ f.name.setAttribute('aria-invalid',n?'false':'true');f.message.setAttribute('aria-invalid',m?'false':'true');
+ if(!n||!m){st.textContent=T.req;st.classList.remove('ok');return}
+ var body=T.hi+'\n\n'+m+'\n\n'+n+(o?' · '+o:''),url;
+ if(via==='wa'){url='https://wa.me/97332009796?text='+encodeURIComponent(body)}
+ else if(matchMedia('(hover: hover) and (pointer: fine)').matches){url='https://mail.google.com/mail/?view=cm&fs=1&to=mayakeshk3@gmail.com&su='+encodeURIComponent(T.subj+n)+'&body='+encodeURIComponent(body)}
+ else{url='mailto:mayakeshk3@gmail.com?subject='+encodeURIComponent(T.subj+n)+'&body='+encodeURIComponent(body)}
+ if(url.indexOf('mailto:')===0)location.href=url;else window.open(url,'_blank','noopener');
+ st.textContent=T.ok;st.classList.add('ok');
 });
 })();
 </script>
 <script>
 (function(){
 var r=document.getElementById('rail');if(!r)return;var h=document.querySelector('header.hero');
-function u(){var lim=h?h.getBoundingClientRect().bottom:300;r.classList.toggle('on',lim<0)}
+var cs=document.getElementById('contact'),inC=false;
+if(cs&&'IntersectionObserver' in window){new IntersectionObserver(function(e){inC=e[0].isIntersecting;u()},{threshold:.15}).observe(cs)}
+function u(){var lim=h?h.getBoundingClientRect().bottom:300;r.classList.toggle('on',lim<0&&!inC)}
 window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u);u();
 var m=document.getElementById('rmail');
 if(matchMedia('(hover: hover) and (pointer: fine)').matches){m.href=m.getAttribute('data-gmail');m.target='_blank';m.rel='noopener'}
